@@ -1,0 +1,39 @@
+﻿# Variables privadas
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Entornos y archivos temporales
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+Thumbs.db
+
+# Node.js (por si se utiliza posteriormente)
+node_modules/
+.next/
+
+# Archivos de configuración local
+.vscode/
+
+# Archivos locales y sensibles del backend
+backend/cookies.txt
+backend/informe_prueba.pdf
+backend/venv/
+backend/__pycache__/
+
+backend/cookies.txt
+
+# Documentos PDF locales y reportes
+backend/informes/*.pdf
+
+backend/app_antes_cambios.py
+
+bomberos-oruro/static/js/app original.js
+bomberos-oruro/static/js/separar_codigo.py

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG Bombers - Oruro</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/collection/components/icon/icon.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Nuestro CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- LOGIN + REGISTRO -->
+    <!-- ========================================= -->
+    <div id="pantallaLogin" class="pantalla-login">
+
+        <div class="login-fondo">
+            <div class="login-info">
+                <div class="logo-grande">
+                    <ion-icon name="flame-outline"></ion-icon>
+                </div>
+                <h1>SIG Bombers</h1>
+                <p>Sistema de Información Geográfica</p>
+                <p class="subtitulo">Cuerpo de Bomberos de Oruro</p>
+            </div>
+        </div>
+
+        <div class="login-panel">
+            <div class="login">
+
+                <h2>Iniciar sesión</h2>
+                <p class="login-descripcion">Ingresa tus credenciales para continuar</p>
+
+                <!-- FORMULARIO LOGIN -->
+                <form id="formLogin">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Tu contraseña" required>
+
+                    <button type="submit" id="btnLogin">Ingresar</button>
+                </form>
+
+                <p id="mensajeLogin" class="mensaje-login"></p>
+
+                <p class="enlace-registro">
+                    ¿No tienes cuenta?
+                    <a href="#" id="mostrarRegistro">Regístrate</a>
+                </p>
+
+                <!-- FORMULARIO REGISTRO -->
+                <form id="formRegistro" class="oculto">
+                    <label for="regNombre">Nombre completo</label>
+                    <input type="text" id="regNombre" placeholder="Tu nombre" required>
+
+                    <label for="regTelefono">Teléfono</label>
+                    <input type="text" id="regTelefono" placeholder="Ej: 71234567">
+
+                    <label for="regEmail">Correo electrónico</label>
+                    <input type="email" id="regEmail" placeholder="Correo electrónico" required>
+
+                    <label for="regPassword">Contraseña</label>
+                    <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" required>
+
+                    <label for="regPassword2">Confirmar contraseña</label>
+                    <input type="password" id="regPassword2" placeholder="Repite la contraseña" required>
+
+                    <button type="submit" id="btnRegistro">Crear cuenta</button>
+                </form>
+
+                <p id="mensajeRegistro" class="mensaje-login"></p>
+
+                <p class="enlace-registro oculto" id="volverLogin">
+                    ¿Ya tienes cuenta?
+                    <a href="#" id="mostrarLogin">Inicia sesión</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ========================================= -->
+    <!-- APLICACIÓN -->
+    <!-- ========================================= -->
+    <div id="aplicacion" class="aplicacion oculto">
+
+        <header>
+            <div class="header-izquierda">
+                <button id="btnMenu" class="btn-menu">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+                <div>
+                    <h1>SIG Bombers</h1>
+                    <p>Bomberos Oruro</p>
+                </div>
+            </div>
+
+            <div class="header-derecha">
+                <span id="usuarioNombre">Usuario</span>
+                <button id="btnCerrarSesion" class="btn-cerrar-sesion">
+                    <ion-icon name="log-out-outline"></ion-icon>
+                    Cerrar sesión
+                </button>
+            </div>
+        </header>
+
+        <!-- ========================================= -->
+        <!-- CONTENEDOR DEL MENÚ -->
+        <!-- ========================================= -->
+        <div id="contenedorMenu" class="contenedor-menu oculto">
+
+            <!-- MENÚ IZQUIERDO -->
+            <div id="menuLateral" class="menu-lateral">
+
+                <div class="menu-header">
+                    <h3>Menú</h3>
+
+                    <button id="btnCerrarMenu" class="btn-cerrar-menu">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </div>
+
+
+                <nav class="menu-opciones">
+
+                    <button class="menu-item" id="menuNotificaciones">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                        <span>Notificaciones</span>
+                    </button>
+
+                    <button class="menu-item" id="menuPostulaciones">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        <span>Postulaciones</span>
+                    </button>
+
+                    <button class="menu-item oculto" id="menuEstadisticas">
+                        <ion-icon name="stats-chart-outline"></ion-icon>
+                        <span>Estadísticas</span>
+                    </button>
+
+                </nav>
+
+            </div>
+
+
+            <!-- CONTENIDO A LA DERECHA -->
+            <div id="panelContenido" class="panel-contenido">
+
+                <!-- NOTIFICACIONES -->
+                <div id="panelNotificaciones"
+                    class="contenido-menu oculto">
+
+                    <h2>
+                        <ion-icon name="notifications-outline"></ion-icon>
+                        Notificaciones
+                    </h2>
+
+                    <div class="pestanas-notificaciones">
+
+
+                        <button id="btnPendientes" class="pestana activa">
+                            <ion-icon name="time-outline"></ion-icon>
+                            Pendientes
+                        </button>
+
+                        <button id="btnLeidas" class="pestana">
+                            <ion-icon name="checkmark-done-outline"></ion-icon>
+                            Leídas
+                        </button>
+
+
+                    </div>
+
+                    <div id="listaNotificaciones">
+                        <p>No hay notificaciones.</p>
+                    </div>
+
+                </div>
+
+                <!-- POSTULACIONES -->
+                <div id="panelPostulaciones" class="contenido-menu oculto">
+
+                    <div class="encabezado-panel">
+                        <h2>
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            Postulaciones
+                        </h2>
+                    </div>
+
+                    <!-- VISTA PARA CIUDADANO -->
+                    <div id="vistaCiudadanoPostulacion" class="oculto">
+
+                        <p>¿Quieres postularte para ser bombero?</p>
+
+                        <button id="btnPostularse">
+                            Enviar postulación
+                        </button>
+
+                        <p id="mensajePostulacion"
+                        class="mensaje-bombero">
+                        </p>
+
+                        <h3>Mis postulaciones</h3>
+
+                        <div id="listaMisPostulaciones">
+                            <p>Cargando...</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- VISTA PARA JEFE -->
+                    <div id="vistaJefePostulaciones" class="oculto">
+
+                        <div id="listaPostulacionesJefe">
+                            <p>Cargando postulaciones...</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ESTADÍSTICAS -->
+
+                <div id="panelEstadisticas" class="contenido-menu oculto">
+
+                    <div class="encabezado-panel">
+
+                        <h2>
+                            <ion-icon name="stats-chart-outline"></ion-icon>
+                            Estadísticas operativas
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        id="resumenEstadisticas"
+                        class="resumen-estadisticas"
+                    >
+
+                        <p>Cargando estadísticas...</p>
+
+                    </div>
+
+
+                    <h3>Incidentes por tipo</h3>
+
+
+                    <div
+                        id="graficoTipos"
+                        class="grafico-tipos"
+                    ></div>
+
+                </div>
+            </div> <!-- cierre panelContenido -->
+
+        </div> <!-- cierre contenedorMenu -->
+
+
+        <!-- Fondo oscuro -->
+        <div
+            id="menuOverlay"
+            class="menu-overlay oculto"
+        ></div>
+
+
+        <!-- MAPA -->
+        <main>
+            <div id="map"></div>
+
+
+                <div class="controles-mapa">
+                    <button id="btnUbicacion">
+                        <ion-icon name="navigate-outline"></ion-icon>
+                        Estoy aquí
+                    </button>
+
+                    <button id="btnIncendio">
+                        <ion-icon name="flame-outline"></ion-icon>
+                        Reportar incendio
+                    </button>
+                </div>
+
+
+            <div id="panelIncidente" class="panel-incidente oculto">
+                <h2>
+                    <ion-icon name="alert-circle-outline"></ion-icon>
+                    Incidente
+                </h2>
+                <p><strong>Código:</strong> <span id="detalleCodigo"></span></p>
+                <p><strong>Tipo:</strong> <span id="detalleTipo"></span></p>
+                <p><strong>Estado:</strong> <span id="detalleEstado"></span></p>
+                <p><strong>Descripción:</strong> <span id="detalleDescripcion"></span></p>
+            </div>
+        </main>
+
+    </div> <!-- cierre aplicacion -->
+
+    <!-- ========================================= -->
+    <!-- LEAFLET -->
+    <!-- ========================================= -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- ========================================= -->
+    <!-- CONFIGURACIÓN Y MAPA -->
+    <!-- ========================================= -->
+    <script src="{{ url_for('static', filename='js/config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mapa.js') }}"></script>
+
+    <!-- ========================================= -->
+    <!-- FUNCIONES DEL SISTEMA -->
+    <!-- ========================================= -->
+    <script src="{{ url_for('static', filename='js/estadisticas.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/incidentes.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/informes.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/notificaciones.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/postulaciones.js') }}"></script>
+
+    <!-- ========================================= -->
+    <!-- AUTENTICACIÓN Y MENÚ -->
+    <!-- ========================================= -->
+    <script src="{{ url_for('static', filename='js/autenticacion.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+
+    <!-- ========================================= -->
+    <!-- INICIO DE LA APLICACIÓN -->
+    <!-- ========================================= -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
