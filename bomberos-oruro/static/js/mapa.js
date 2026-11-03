@@ -76,8 +76,6 @@ btnUbicacion.addEventListener("click", () => {
 // BOTÓN REPORTAR INCENDIO
 // ============================================
 
-const btnIncendio = document.getElementById("btnIncendio");
-
 btnIncendio.addEventListener("click", () => {
 
     modoIncendio = true;
