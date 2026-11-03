@@ -37,10 +37,8 @@ app.secret_key = os.getenv(
 # ConfiguraciÃ³n de sesiones
 app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
-    SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=os.getenv(
-        "COOKIE_SECURE", "False"
-    ).lower() == "true"
+    SESSION_COOKIE_SAMESITE="None",
+    SESSION_COOKIE_SECURE=True
 )
 
 app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
