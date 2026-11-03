@@ -71,3 +71,22 @@ btnUbicacion.addEventListener("click", () => {
         }
     );
 });
+
+// ============================================
+// BOTÓN REPORTAR INCENDIO
+// ============================================
+
+const btnIncendio = document.getElementById("btnIncendio");
+
+btnIncendio.addEventListener("click", () => {
+
+    modoIncendio = true;
+
+    alert("Selecciona en el mapa la ubicación del incendio.");
+
+    btnIncendio.innerHTML = `
+        <ion-icon name="location-outline"></ion-icon>
+        Selecciona ubicación...
+    `;
+
+});
