@@ -15,15 +15,15 @@ body {
 }
 
 /* ========================================= */
-/* LOGIN CON IMAGEN DE FONDO */
+/* LOGIN CON IMAGEN DE FONDO TRANSPARENTE */
 /* ========================================= */
 
 .pantalla-login {
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: flex-end; /* formulario a la derecha en PC */
-    align-items: stretch;
+    justify-content: flex-end;
+    align-items: center;
     background-image: url('/static/img/login-desktop.jpg');
     background-size: cover;
     background-position: center;
@@ -31,12 +31,12 @@ body {
     position: relative;
 }
 
-/* Capa oscura solo en el lado del formulario (opcional, se puede quitar) */
+/* Capa oscura suave para que se lea mejor el texto */
 .pantalla-login::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 70%);
+    background: rgba(0, 0, 0, 0.35);
     z-index: 1;
 }
 
@@ -47,33 +47,35 @@ body {
 .login-panel {
     position: relative;
     z-index: 2;
-    width: 440px;
-    min-height: 100vh;
-    background: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.25);
+    width: 420px;
+    margin-right: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    padding: 40px 36px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .login {
     width: 100%;
-    max-width: 340px;
 }
 
 .login h2 {
     font-size: 28px;
-    color: #111;
+    color: #ffffff;
     margin-bottom: 6px;
     font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .login-descripcion {
-    color: #666;
+    color: rgba(255, 255, 255, 0.85);
     font-size: 14px;
     margin-bottom: 28px;
+    text-align: center;
 }
 
 .login label {
@@ -82,24 +84,29 @@ body {
     margin-bottom: 6px;
     font-weight: 600;
     font-size: 13px;
-    color: #333;
+    color: #ffffff;
 }
 
 .login input {
     width: 100%;
     padding: 14px 16px;
-    border: 1.5px solid #e5e5e5;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 12px;
     font-size: 15px;
-    background: #fafafa;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
     transition: all 0.2s;
+}
+
+.login input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .login input:focus {
     outline: none;
-    border-color: #d32f2f;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.12);
+    border-color: #ff5252;
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 0 4px rgba(255, 82, 82, 0.2);
 }
 
 #btnLogin, #btnRegistro {
@@ -114,12 +121,12 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.35);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
 }
 
 #btnLogin:hover, #btnRegistro:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.45);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
 }
 
 #btnLogin:disabled, #btnRegistro:disabled {
@@ -131,7 +138,7 @@ body {
 
 .mensaje-login {
     margin-top: 14px;
-    color: #d32f2f !important;
+    color: #ff8a80 !important;
     font-weight: 600;
     font-size: 13px;
     text-align: center;
@@ -140,12 +147,12 @@ body {
 .enlace-registro {
     margin-top: 22px;
     font-size: 14px;
-    color: #666;
+    color: rgba(255, 255, 255, 0.8);
     text-align: center;
 }
 
 .enlace-registro a {
-    color: #d32f2f;
+    color: #ff8a80;
     font-weight: 700;
     text-decoration: none;
 }
@@ -154,26 +161,22 @@ body {
     text-decoration: underline;
 }
 
-/* ===== CELULAR: formulario centrado ===== */
+/* ===== CELULAR ===== */
 @media (max-width: 768px) {
     .pantalla-login {
         justify-content: center;
-        align-items: center;
         background-image: url('/static/img/login-mobile.jpg');
     }
 
     .pantalla-login::before {
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(0, 0, 0, 0.4);
     }
 
     .login-panel {
         width: 100%;
-        max-width: 400px;
-        min-height: auto;
+        max-width: 380px;
         margin: 20px;
         padding: 32px 24px;
-        border-radius: 18px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     }
 }
 
