@@ -15,7 +15,7 @@ body {
 }
 
 /* ========================================= */
-/* LOGIN CON IMAGEN DE FONDO TRANSPARENTE */
+/* LOGIN MODERNO CON GLASS */
 /* ========================================= */
 
 .pantalla-login {
@@ -31,12 +31,11 @@ body {
     position: relative;
 }
 
-/* Capa oscura suave para que se lea mejor el texto */
 .pantalla-login::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: linear-gradient(135deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
     z-index: 1;
 }
 
@@ -48,106 +47,135 @@ body {
     position: relative;
     z-index: 2;
     width: 420px;
-    margin-right: 60px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 20px;
-    padding: 40px 36px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    margin-right: 70px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 24px;
+    padding: 42px 38px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
 }
 
 .login {
     width: 100%;
 }
 
+/* Título */
 .login h2 {
-    font-size: 28px;
+    font-size: 29px;
     color: #ffffff;
-    margin-bottom: 6px;
-    font-weight: 700;
+    margin-bottom: 8px;
+    font-weight: 750;
     text-align: center;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .login-descripcion {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
     text-align: center;
+    line-height: 1.5;
 }
 
+/* Labels */
 .login label {
     display: block;
-    margin-top: 16px;
-    margin-bottom: 6px;
+    margin-top: 18px;
+    margin-bottom: 7px;
     font-weight: 600;
     font-size: 13px;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.9);
 }
 
+/* Inputs con icono */
 .login input {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
+    padding: 15px 16px 15px 46px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 14px;
     font-size: 15px;
-    background: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.14);
     color: #ffffff;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
 }
 
 .login input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .login input:focus {
     outline: none;
-    border-color: #ff5252;
-    background: rgba(255, 255, 255, 0.28);
-    box-shadow: 0 0 0 4px rgba(255, 82, 82, 0.2);
+    border-color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
+/* Contenedor de input + icono */
+.input-con-icono {
+    position: relative;
+}
+
+.input-con-icono ion-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+/* Botón principal */
 #btnLogin, #btnRegistro {
     width: 100%;
-    margin-top: 26px;
-    padding: 15px;
+    margin-top: 30px;
+    padding: 16px;
     border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e53935, #c62828);
     color: white;
-    font-size: 15px;
+    font-size: 15.5px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 22px rgba(198, 40, 40, 0.4);
+    letter-spacing: 0.3px;
 }
 
 #btnLogin:hover, #btnRegistro:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(198, 40, 40, 0.5);
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+}
+
+#btnLogin:active, #btnRegistro:active {
+    transform: translateY(0);
 }
 
 #btnLogin:disabled, #btnRegistro:disabled {
-    background: #999;
+    background: #777;
     box-shadow: none;
     cursor: not-allowed;
     transform: none;
 }
 
+/* Mensajes */
 .mensaje-login {
-    margin-top: 14px;
+    margin-top: 16px;
     color: #ff8a80 !important;
     font-weight: 600;
     font-size: 13px;
     text-align: center;
 }
 
+/* Enlace registro */
 .enlace-registro {
-    margin-top: 22px;
+    margin-top: 26px;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.75);
     text-align: center;
 }
 
@@ -155,9 +183,11 @@ body {
     color: #ff8a80;
     font-weight: 700;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .enlace-registro a:hover {
+    color: #ffab91;
     text-decoration: underline;
 }
 
@@ -165,18 +195,59 @@ body {
 @media (max-width: 768px) {
     .pantalla-login {
         justify-content: center;
+        align-items: center;
         background-image: url('/static/img/login-mobile.jpg');
+        background-position: center;
     }
 
     .pantalla-login::before {
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.55); /* más oscuro para que se lean las letras */
     }
 
     .login-panel {
         width: 100%;
-        max-width: 380px;
+        max-width: 360px;
         margin: 20px;
         padding: 32px 24px;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.35); /* más oscuro y legible */
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .login h2 {
+        font-size: 24px;
+        color: #ffffff;
+    }
+
+    .login-descripcion {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13.5px;
+    }
+
+    .login label {
+        color: #ffffff;
+    }
+
+    .login input {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .login input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .input-con-icono ion-icon {
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    .enlace-registro {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .enlace-registro a {
+        color: #ff8a80;
     }
 }
 
@@ -1044,20 +1115,20 @@ input:focus-visible {
 }
 
 .login h2 {
-    color: var(--color-primario);
+    color: #ffffff;
     letter-spacing: -0.5px;
 }
 
 .login-descripcion {
-    color: var(--color-secundario);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
 }
 
 .login input {
     min-height: 48px;
-    border: 1px solid var(--color-borde);
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 10px;
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.14);
 }
 
 .login input:focus {
@@ -1648,31 +1719,6 @@ header {
     }
 }
 
-
-/* Alineación de Ionicons en encabezados y pestañas */
-
-.contenido-menu h2 ion-icon,
-.pestana ion-icon {
-    display: inline-block;
-    vertical-align: -3px;
-    margin-right: 5px;
-}
-
-.contenido-menu h2 ion-icon {
-    font-size: 22px;
-}
-
-.pestana {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.logo-grande ion-icon {
-    color: #fff;
-}
-
 #panelIncidente h2 ion-icon {
     color: #c62828;
 }
@@ -1768,20 +1814,31 @@ header {
     margin-right: 4px;
 }
 
-/* ===== LOGIN RESPONSIVE ===== */
+/* ===== LOGIN RESPONSIVE UNIFICADO ===== */
 @media (max-width: 768px) {
     .pantalla-login {
         background-image: url('/static/img/login-mobile.jpg');
     }
 
     .login-panel {
-        max-width: 100%;
-        margin: 16px;
-        padding: 32px 24px;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        padding: 24px 20px !important;
         border-radius: 16px;
     }
 
     .login h2 {
         font-size: 23px;
+        color: #ffffff !important;
+    }
+
+    .login-descripcion, 
+    .login label, 
+    .enlace-registro {
+        color: #ffffff !important;
+    }
+    
+    .login input::placeholder {
+        color: rgba(255, 255, 255, 0.75) !important;
     }
 }
