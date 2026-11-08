@@ -15,91 +15,47 @@ body {
 }
 
 /* ========================================= */
-/* LOGIN MODERNO */
+/* LOGIN CON IMAGEN DE FONDO */
 /* ========================================= */
 
 .pantalla-login {
     width: 100%;
     height: 100vh;
     display: flex;
-    background: #0f0f0f;
+    justify-content: flex-end; /* formulario a la derecha en PC */
+    align-items: stretch;
+    background-image: url('/static/img/login-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Capa oscura solo en el lado del formulario (opcional, se puede quitar) */
+.pantalla-login::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 70%);
+    z-index: 1;
 }
 
 .login-fondo {
-    flex: 1.2;
-    background: linear-gradient(145deg, #7f0000 0%, #b71c1c 40%, #e53935 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-}
-
-.login-fondo::before {
-    content: "";
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 50%;
-    top: -100px;
-    left: -100px;
-}
-
-.login-fondo::after {
-    content: "";
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: rgba(255,255,255,0.04);
-    border-radius: 50%;
-    bottom: -80px;
-    right: -60px;
-}
-
-.login-info {
-    text-align: center;
-    max-width: 420px;
-    position: relative;
-    z-index: 2;
-}
-
-.logo-grande {
-    font-size: 90px;
-    margin-bottom: 18px;
-    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
-}
-
-.login-info h1 {
-    font-size: 48px;
-    font-weight: 800;
-    margin-bottom: 12px;
-    letter-spacing: -1px;
-}
-
-.login-info p {
-    font-size: 18px;
-    opacity: 0.92;
-    font-weight: 400;
-}
-
-.login-info .subtitulo {
-    margin-top: 10px;
-    font-size: 15px;
-    opacity: 0.75;
-    font-weight: 300;
+    display: none !important;
 }
 
 .login-panel {
-    width: 460px;
-    background: #ffffff;
+    position: relative;
+    z-index: 2;
+    width: 440px;
+    min-height: 100vh;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 40px;
-    box-shadow: -20px 0 60px rgba(0,0,0,0.25);
+    padding: 40px;
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.25);
 }
 
 .login {
@@ -115,15 +71,15 @@ body {
 }
 
 .login-descripcion {
-    color: #777;
+    color: #666;
     font-size: 14px;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .login label {
     display: block;
-    margin-top: 18px;
-    margin-bottom: 7px;
+    margin-top: 16px;
+    margin-bottom: 6px;
     font-weight: 600;
     font-size: 13px;
     color: #333;
@@ -148,7 +104,7 @@ body {
 
 #btnLogin, #btnRegistro {
     width: 100%;
-    margin-top: 28px;
+    margin-top: 26px;
     padding: 15px;
     border: none;
     border-radius: 12px;
@@ -174,7 +130,7 @@ body {
 }
 
 .mensaje-login {
-    margin-top: 16px;
+    margin-top: 14px;
     color: #d32f2f !important;
     font-weight: 600;
     font-size: 13px;
@@ -182,7 +138,7 @@ body {
 }
 
 .enlace-registro {
-    margin-top: 24px;
+    margin-top: 22px;
     font-size: 14px;
     color: #666;
     text-align: center;
@@ -196,6 +152,29 @@ body {
 
 .enlace-registro a:hover {
     text-decoration: underline;
+}
+
+/* ===== CELULAR: formulario centrado ===== */
+@media (max-width: 768px) {
+    .pantalla-login {
+        justify-content: center;
+        align-items: center;
+        background-image: url('/static/img/login-mobile.jpg');
+    }
+
+    .pantalla-login::before {
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    .login-panel {
+        width: 100%;
+        max-width: 400px;
+        min-height: auto;
+        margin: 20px;
+        padding: 32px 24px;
+        border-radius: 18px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
 }
 
 /* ========================================= */
@@ -1800,4 +1779,22 @@ header {
 .popup-incidente button ion-icon {
     vertical-align: middle;
     margin-right: 4px;
+}
+
+/* ===== LOGIN RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .pantalla-login {
+        background-image: url('/static/img/login-mobile.jpg');
+    }
+
+    .login-panel {
+        max-width: 100%;
+        margin: 16px;
+        padding: 32px 24px;
+        border-radius: 16px;
+    }
+
+    .login h2 {
+        font-size: 23px;
+    }
 }
