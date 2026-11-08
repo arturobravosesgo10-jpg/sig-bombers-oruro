@@ -1011,22 +1011,6 @@ input:focus-visible {
     outline-offset: 3px;
 }
 
-/* LOGIN */
-
-.pantalla-login {
-    background: #f8fafc;
-}
-
-.login-fondo {
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(255, 255, 255, 0.10),
-            transparent 28%
-        ),
-        linear-gradient(145deg, #101b2d 0%, #1b2c46 58%, #9f2028 100%);
-}
-
 .logo-grande {
     display: flex;
     align-items: center;
