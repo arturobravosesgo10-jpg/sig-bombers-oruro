@@ -4,6 +4,996 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f4f5f7;
+    color: #1a1a1a;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* ========================================= */
+/* LOGIN MODERNO */
+/* ========================================= */
+
+.pantalla-login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: #0f0f0f;
+}
+
+.login-fondo {
+    flex: 1.2;
+    background: linear-gradient(145deg, #7f0000 0%, #b71c1c 40%, #e53935 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-fondo::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+}
+
+.login-fondo::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+    bottom: -80px;
+    right: -60px;
+}
+
+.login-info {
+    text-align: center;
+    max-width: 420px;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-grande {
+    font-size: 90px;
+    margin-bottom: 18px;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+}
+
+.login-info h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+.login-info p {
+    font-size: 18px;
+    opacity: 0.92;
+    font-weight: 400;
+}
+
+.login-info .subtitulo {
+    margin-top: 10px;
+    font-size: 15px;
+    opacity: 0.75;
+    font-weight: 300;
+}
+
+.login-panel {
+    width: 460px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 40px;
+    box-shadow: -20px 0 60px rgba(0,0,0,0.25);
+}
+
+.login {
+    width: 100%;
+    max-width: 340px;
+}
+
+.login h2 {
+    font-size: 28px;
+    color: #111;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.login-descripcion {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.login label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #333;
+}
+
+.login input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 15px;
+    background: #fafafa;
+    transition: all 0.2s;
+}
+
+.login input:focus {
+    outline: none;
+    border-color: #d32f2f;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.12);
+}
+
+#btnLogin, #btnRegistro {
+    width: 100%;
+    margin-top: 28px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.35);
+}
+
+#btnLogin:hover, #btnRegistro:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(211, 47, 47, 0.45);
+}
+
+#btnLogin:disabled, #btnRegistro:disabled {
+    background: #999;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.mensaje-login {
+    margin-top: 16px;
+    color: #d32f2f !important;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+}
+
+.enlace-registro {
+    margin-top: 24px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+.enlace-registro a {
+    color: #d32f2f;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.enlace-registro a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================= */
+/* APLICACIÓN */
+/* ========================================= */
+
+.aplicacion {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================= */
+/* HEADER */
+/* ========================================= */
+
+header {
+    height: 64px;
+    background: #b71c1c;
+    color: white;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.header-izquierda {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.header-izquierda h1 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.header-izquierda p {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.header-derecha {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#usuarioNombre {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.btn-menu {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background 0.2s;
+}
+
+.btn-menu:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.btn-cerrar-sesion {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: white;
+    color: #b71c1c;
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-cerrar-sesion:hover {
+    background: #f5f5f5;
+}
+
+.btn-cerrar-sesion ion-icon {
+    font-size: 18px;
+}
+
+/* ========================================= */
+/* CONTENEDOR SIDEBAR + CONTENIDO */
+/* ========================================= */
+
+.contenedor-menu {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    height: 100vh;
+
+    display: flex;
+
+    z-index: 3000;
+
+}
+
+
+/* ========================================= */
+/* MENÚ LATERAL */
+/* ========================================= */
+
+.menu-lateral {
+
+    width: 280px;
+
+    height: 100vh;
+
+    background: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+
+    z-index: 3002;
+
+}
+
+
+.menu-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background: #b71c1c;
+
+    color: white;
+
+}
+
+
+.menu-header h3 {
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+}
+
+
+.btn-cerrar-menu {
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.menu-opciones {
+
+    padding: 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.menu-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color: #333;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    width: 100%;
+
+    transition: 0.2s;
+
+}
+
+
+.menu-item:hover {
+
+    background: #f5f5f5;
+
+}
+
+
+.menu-item.activo {
+
+    background: #fff0f0;
+
+    color: #b71c1c;
+
+}
+
+
+.menu-item ion-icon {
+
+    font-size: 22px;
+
+    color: #d32f2f;
+
+}
+
+
+/* ========================================= */
+/* PANEL DE CONTENIDO */
+/* ========================================= */
+
+.panel-contenido {
+
+    width: 430px;
+
+    height: 100vh;
+
+    background: white;
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    box-shadow: 8px 0 28px rgba(0,0,0,0.15);
+
+    z-index: 3001;
+
+}
+
+
+/* Cada contenido */
+
+.contenido-menu {
+
+    width: 100%;
+
+}
+
+
+/* ========================================= */
+/* OVERLAY */
+/* ========================================= */
+
+.menu-overlay {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0,0,0,0.4);
+
+    z-index: 2500;
+
+}
+
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    .contenedor-menu {
+
+        width: 100%;
+
+    }
+
+
+    .menu-lateral {
+
+        width: 230px;
+
+        flex-shrink: 0;
+
+    }
+
+
+    .panel-contenido {
+
+        flex: 1;
+
+        width: auto;
+
+        padding: 18px;
+
+    }
+
+}
+
+/* ========================================= */
+/* MAPA */
+/* ========================================= */
+
+main {
+    position: relative;
+    flex: 1;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================= */
+/* CONTROLES DEL MAPA */
+/* ========================================= */
+
+.controles-mapa {
+    position: absolute;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.controles-mapa button {
+    border: none;
+    border-radius: 14px;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.controles-mapa button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+}
+
+#btnUbicacion {
+    background: white;
+    color: #b71c1c;
+}
+
+#btnIncendio {
+    background: #d32f2f;
+    color: white;
+}
+
+/* ========================================= */
+/* CONTENIDOS DEL MENÚ */
+/* ========================================= */
+
+.panel-notificaciones,
+.panel-estadisticas,
+.panel-bomberos,
+.panel-postulaciones {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    overflow-y: visible;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.panel-notificaciones h2,
+.panel-estadisticas h2,
+.panel-bomberos h2,
+.panel-postulaciones h2,
+.panel-estadisticas h3,
+.panel-bomberos h3,
+.panel-postulaciones h3 {
+    color: #b71c1c;
+    margin-bottom: 14px;
+    font-size: 18px;
+}
+
+.encabezado-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.btn-cerrar {
+    border: none;
+    background: transparent;
+    color: #b71c1c;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Notificaciones */
+.pestanas-notificaciones {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.pestana {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #f0f0f0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.pestana.activa {
+    background: #d32f2f;
+    color: white;
+}
+
+.notificacion {
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #f8f8f8;
+    border-left: 4px solid #d32f2f;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.notificacion:hover {
+    background: #f0f0f0;
+}
+
+.notificacion strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.notificacion p {
+    margin: 4px 0;
+    color: #444;
+    font-size: 14px;
+}
+
+.notificacion small {
+    color: #888;
+    font-size: 12px;
+}
+
+/* Estadísticas */
+.resumen-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tarjeta-estadistica {
+    padding: 14px;
+    border-radius: 12px;
+    background: #fff5f5;
+    border-left: 4px solid #d32f2f;
+}
+
+.tarjeta-estadistica span {
+    display: block;
+    color: #777;
+    font-size: 12px;
+}
+
+.tarjeta-estadistica strong {
+    display: block;
+    margin-top: 4px;
+    color: #222;
+    font-size: 22px;
+}
+
+.fila-grafico {
+    display: grid;
+    grid-template-columns: 100px 1fr 32px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.barra-grafico {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #eee;
+}
+
+.barra-grafico div {
+    height: 100%;
+    border-radius: 999px;
+    background: #d32f2f;
+}
+
+.error-estadisticas {
+    color: #b71c1c;
+    font-weight: 600;
+}
+
+/* Bomberos */
+.formulario-bombero {
+    background: #fff5f5;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.fila-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.fila-form input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+#btnCrearBombero {
+    width: 100%;
+    margin-top: 8px;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    background: #d32f2f;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#btnCrearBombero:hover {
+    background: #b71c1c;
+}
+
+.mensaje-bombero {
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.bombero-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #f8f8f8;
+    border-left: 4px solid #d32f2f;
+}
+
+.bombero-item.inactivo {
+    opacity: 0.55;
+    border-left-color: #999;
+}
+
+.bombero-info strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.bombero-info span {
+    font-size: 13px;
+    color: #666;
+}
+
+.bombero-acciones button {
+    border: none;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-desactivar {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-activar {
+    background: #2e7d32;
+    color: white;
+}
+
+/* Postulaciones */
+#btnPostularse {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 16px 0;
+    border: none;
+    border-radius: 10px;
+    background: #d32f2f;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#btnPostularse:hover {
+    background: #b71c1c;
+}
+
+#btnPostularse:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+.postulacion-item {
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background: #f8f8f8;
+    border-left: 4px solid #d32f2f;
+}
+
+.postulacion-item.aceptada {
+    border-left-color: #2e7d32;
+}
+
+.postulacion-item.rechazada {
+    border-left-color: #999;
+}
+
+.postulacion-item strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.postulacion-item span {
+    font-size: 13px;
+    color: #666;
+}
+
+.postulacion-acciones {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.postulacion-acciones button {
+    flex: 1;
+    border: none;
+    padding: 9px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-aceptar {
+    background: #2e7d32;
+    color: white;
+}
+
+.btn-rechazar {
+    background: #c62828;
+    color: white;
+}
+
+/* ========================================= */
+/* MARCADORES */
+/* ========================================= */
+
+.icono-incidente {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 22px;
+    background: white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    border: 3px solid;
+}
+
+.marcador-reportado .icono-incidente { border-color: #d32f2f; }
+.marcador-en-camino .icono-incidente { border-color: #f57c00; }
+.marcador-atendido .icono-incidente { border-color: #2e7d32; }
+
+.marcador-estacion {
+    background: transparent;
+    border: none;
+}
+
+.icono-estacion {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border: 3px solid #b71c1c;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.4);
+    font-size: 26px;
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    .pantalla-login {
+        flex-direction: column;
+    }
+
+    .login-fondo {
+        display: none;
+    }
+
+    .login-panel {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .contenedor-menu {
+        width: 100%;
+    }
+
+    .menu-lateral {
+        width: 230px;
+        flex-shrink: 0;
+    }
+
+    .panel-contenido {
+        flex: 1;
+        width: auto;
+        padding: 18px;
+    }
+
+}
+
+
+/* ==========================================
+   SIG BOMBERS — REDISEÑO VISUAL
+   Agregar al final de style.css
+   ========================================== */
+
 :root {
     --color-primario: #17243a;
     --color-primario-hover: #223653;
@@ -21,13 +1011,9 @@
 }
 
 body {
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
     background: var(--color-fondo);
     color: var(--color-texto);
-}
-
-.oculto {
-    display: none !important;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 button,
@@ -39,224 +1025,118 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* ========================================= */
-/* LOGIN CON IMÁGENES DE FONDO */
-/* ========================================= */
-
-.pantalla-login {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-image: url('/static/img/login-desktop.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(59, 130, 246, 0.45);
+    outline-offset: 3px;
 }
 
-/* Capa oscura para que se lea mejor el formulario */
-.pantalla-login::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
+/* LOGIN */
+
+.pantalla-login {
+    background: #f8fafc;
 }
 
 .login-fondo {
-    display: none; /* ya no se usa */
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(255, 255, 255, 0.10),
+            transparent 28%
+        ),
+        linear-gradient(145deg, #101b2d 0%, #1b2c46 58%, #9f2028 100%);
+}
+
+.logo-grande {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 112px;
+    height: 112px;
+    margin: 0 auto 26px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.logo-grande ion-icon {
+    font-size: 68px;
+}
+
+.login-info h1 {
+    letter-spacing: -1.5px;
+}
+
+.login-info p {
+    line-height: 1.6;
 }
 
 .login-panel {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 420px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    padding: 40px 36px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-    margin: 20px;
-}
-
-.login {
-    width: 100%;
+    box-shadow: -12px 0 45px rgba(15, 23, 42, 0.08);
 }
 
 .login h2 {
-    font-size: 28px;
-    color: #17243a;
-    margin-bottom: 6px;
-    font-weight: 700;
-    text-align: center;
+    color: var(--color-primario);
+    letter-spacing: -0.5px;
 }
 
 .login-descripcion {
-    color: #64748b;
-    font-size: 14px;
-    margin-bottom: 28px;
-    text-align: center;
-}
-
-.login label {
-    display: block;
-    margin-top: 16px;
-    margin-bottom: 6px;
-    font-weight: 600;
-    font-size: 13px;
-    color: #334155;
+    color: var(--color-secundario);
+    line-height: 1.6;
 }
 
 .login input {
-    width: 100%;
     min-height: 48px;
-    padding: 13px 16px;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 15px;
+    border: 1px solid var(--color-borde);
+    border-radius: 10px;
     background: #f8fafc;
-    transition: all 0.2s;
 }
 
 .login input:focus {
-    outline: none;
-    border-color: #c62828;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(198, 40, 40, 0.12);
+    border-color: var(--color-emergencia);
+    box-shadow: 0 0 0 4px rgba(198, 40, 40, 0.10);
 }
 
 #btnLogin,
 #btnRegistro {
-    width: 100%;
     min-height: 48px;
-    margin-top: 26px;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    background: #c62828;
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 6px 18px rgba(198, 40, 40, 0.3);
+    border-radius: 10px;
+    background: var(--color-emergencia);
+    box-shadow: 0 5px 14px rgba(198, 40, 40, 0.18);
 }
 
 #btnLogin:hover,
 #btnRegistro:hover {
-    background: #a91f1f;
-    transform: translateY(-1px);
+    background: var(--color-emergencia-hover);
+    box-shadow: 0 8px 18px rgba(198, 40, 40, 0.23);
 }
 
-#btnLogin:disabled,
-#btnRegistro:disabled {
-    background: #999;
-    box-shadow: none;
-    cursor: not-allowed;
-    transform: none;
-}
+/* ENCABEZADO PRINCIPAL */
 
-.mensaje-login {
-    margin-top: 14px;
-    color: #c62828 !important;
-    font-weight: 600;
-    font-size: 13px;
-    text-align: center;
-}
-
-.enlace-registro {
-    margin-top: 22px;
-    font-size: 14px;
-    color: #64748b;
-    text-align: center;
-}
-
-.enlace-registro a {
-    color: #c62828;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.enlace-registro a:hover {
-    text-decoration: underline;
-}
-
-/* ===== RESPONSIVE LOGIN ===== */
-@media (max-width: 768px) {
-    .pantalla-login {
-       background-image: url('/static/img/login-mobile.jpg');
-    }
-
-    .login-panel {
-        max-width: 100%;
-        margin: 16px;
-        padding: 32px 24px;
-        border-radius: 16px;
-    }
-
-    .login h2 {
-        font-size: 24px;
-    }
-}
-/* ========================================= */
-/* APLICACIÓN */
-/* ========================================= */
-
-.aplicacion {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-/* HEADER */
 header {
-    height: 72px;
-    background: var(--color-primario);
-    color: white;
-    padding: 0 26px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 3px 14px rgba(15, 23, 42, 0.16);
+    position: relative;
     flex-shrink: 0;
+    height: 72px;
+    padding: 0 26px;
+    background: var(--color-primario);
+    box-shadow: 0 3px 14px rgba(15, 23, 42, 0.16);
 }
 
 .header-izquierda {
-    display: flex;
-    align-items: center;
     gap: 15px;
 }
 
 .header-izquierda h1 {
     font-size: 19px;
-    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
 .header-izquierda p {
-    font-size: 12px;
-    color: #cbd5e1;
     margin-top: 3px;
-}
-
-.header-derecha {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-#usuarioNombre {
-    font-weight: 500;
-    font-size: 14px;
-    max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #f8fafc;
+    color: #cbd5e1;
+    font-size: 12px;
 }
 
 .btn-menu {
@@ -265,11 +1145,9 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.09);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+}
+
+.btn-menu ion-icon {
     font-size: 24px;
 }
 
@@ -277,106 +1155,83 @@ header {
     background: rgba(255, 255, 255, 0.17);
 }
 
+.header-derecha {
+    gap: 14px;
+}
+
+#usuarioNombre {
+    max-width: 220px;
+    overflow: hidden;
+    color: #f8fafc;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .btn-cerrar-sesion {
-    display: flex;
-    align-items: center;
-    gap: 6px;
     min-height: 40px;
     padding: 9px 13px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 10px;
     background: #fff;
     color: var(--color-primario);
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
 }
 
 .btn-cerrar-sesion:hover {
     background: #eaf0f7;
 }
 
-.btn-cerrar-sesion ion-icon {
-    font-size: 18px;
-}
-
-/* MENÚ */
-.contenedor-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    display: flex;
-    z-index: 3000;
-}
+/* MENÚ LATERAL */
 
 .menu-lateral {
-    width: 280px;
-    height: 100vh;
-    background: white;
-    display: flex;
-    flex-direction: column;
+    background: #fff;
     border-right: 1px solid var(--color-borde);
     box-shadow: 8px 0 30px rgba(15, 23, 42, 0.10);
-    z-index: 3002;
 }
 
 .menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     min-height: 78px;
     padding: 20px 22px;
     background: var(--color-primario);
-    color: white;
 }
 
 .menu-header h3 {
     font-size: 16px;
-    font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
 .btn-cerrar-menu {
-    background: transparent;
-    border: none;
-    color: white;
     width: 36px;
     height: 36px;
-    border-radius: 9px;
-    display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
+    border-radius: 9px;
 }
 
 .btn-cerrar-menu:hover {
     background: rgba(255, 255, 255, 0.12);
 }
 
+.btn-cerrar-menu ion-icon {
+    font-size: 24px;
+}
+
 .menu-opciones {
     padding: 18px 12px;
-    display: flex;
-    flex-direction: column;
     gap: 6px;
 }
 
 .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
     min-height: 48px;
     padding: 12px 14px;
     border: 1px solid transparent;
     border-radius: 11px;
-    background: transparent;
+    color: #475569;
     font-size: 14px;
     font-weight: 600;
-    color: #475569;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    transition: 0.18s ease;
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease;
 }
 
 .menu-item:hover {
@@ -391,64 +1246,69 @@ header {
 }
 
 .menu-item ion-icon {
-    font-size: 21px;
     flex-shrink: 0;
+    color: inherit;
+    font-size: 21px;
 }
 
-/* PANEL CONTENIDO */
+/* PANEL LATERAL DE CONTENIDO */
+
 .panel-contenido {
-    width: 430px;
-    height: 100vh;
-    background: white;
-    padding: 25px;
-    overflow-y: auto;
     border-right: 1px solid var(--color-borde);
+    background: #fff;
     box-shadow: 8px 0 26px rgba(15, 23, 42, 0.07);
-    z-index: 3001;
 }
 
-.contenido-menu h2 {
+.contenido-menu {
+    color: var(--color-texto);
+}
+
+.panel-notificaciones h2,
+.panel-estadisticas h2,
+.panel-bomberos h2,
+.panel-postulaciones h2,
+.panel-estadisticas h3,
+.panel-bomberos h3,
+.panel-postulaciones h3 {
     color: var(--color-primario);
-    font-size: 20px;
     font-weight: 750;
-    margin-bottom: 16px;
+    letter-spacing: -0.3px;
 }
 
-.contenido-menu h2 ion-icon {
-    font-size: 22px;
-    vertical-align: -3px;
-    margin-right: 5px;
+.panel-notificaciones h2,
+.panel-estadisticas h2,
+.panel-postulaciones h2 {
+    font-size: 20px;
+    line-height: 1.4;
 }
 
-/* OVERLAY */
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 2500;
+.encabezado-panel {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-borde);
 }
 
-/* MAPA */
-main {
-    position: relative;
-    flex: 1;
+.btn-cerrar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
 }
 
-#map {
-    width: 100%;
-    height: 100%;
+.btn-cerrar:hover {
+    background: #f1f5f9;
 }
+
+.btn-cerrar ion-icon {
+    font-size: 23px;
+}
+
+/* BOTONES DEL MAPA */
 
 .controles-mapa {
-    position: absolute;
-    bottom: 24px;
     right: 24px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
+    bottom: 24px;
     gap: 10px;
 }
 
@@ -464,13 +1324,15 @@ main {
     background: #fff;
     color: var(--color-primario);
     font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
     box-shadow: 0 5px 18px rgba(15, 23, 42, 0.16);
 }
 
 .controles-mapa button ion-icon {
     font-size: 20px;
+}
+
+#btnUbicacion:hover {
+    background: #f8fafc;
 }
 
 #btnIncendio {
@@ -483,31 +1345,29 @@ main {
     background: var(--color-emergencia-hover);
 }
 
+#btnIncendio.oculto {
+    display: none !important;
+}
+
 /* NOTIFICACIONES */
+
 .pestanas-notificaciones {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 16px;
     padding: 4px;
     border-radius: 11px;
     background: #f1f5f9;
 }
 
 .pestana {
-    flex: 1;
     min-height: 40px;
-    padding: 10px;
-    border: none;
+    border: 1px solid transparent;
     border-radius: 8px;
     background: transparent;
     color: #64748b;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
+    transition: 0.18s ease;
+}
+
+.pestana:hover {
+    color: var(--color-primario);
 }
 
 .pestana.activa {
@@ -516,15 +1376,36 @@ main {
     box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
 }
 
+/* TARJETAS DE NOTIFICACIÓN Y POSTULACIÓN */
+
 .notificacion,
-.postulacion-item {
-    padding: 14px;
-    margin-bottom: 10px;
+.postulacion-item,
+.bombero-item {
     border: 1px solid var(--color-borde);
     border-left: 4px solid var(--color-emergencia);
     border-radius: 12px;
     background: #fff;
     box-shadow: 0 3px 10px rgba(15, 23, 42, 0.035);
+    transition:
+        background 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.notificacion:hover,
+.postulacion-item:hover {
+    background: #fafcff;
+    box-shadow: var(--sombra-suave);
+}
+
+.notificacion p {
+    line-height: 1.55;
+}
+
+.notificacion small {
+    display: inline-block;
+    margin-top: 5px;
+    color: var(--color-secundario);
 }
 
 .postulacion-item.aceptada {
@@ -536,64 +1417,174 @@ main {
 }
 
 /* ESTADÍSTICAS */
+
 .resumen-estadisticas {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
-    margin-bottom: 20px;
 }
 
 .tarjeta-estadistica {
+    min-width: 0;
     padding: 16px;
     border: 1px solid var(--color-borde);
     border-left: 4px solid #64748b;
     border-radius: 12px;
     background: #fff;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.035);
 }
 
 .tarjeta-estadistica span {
-    display: block;
     color: var(--color-secundario);
     font-size: 12px;
+    line-height: 1.45;
 }
 
 .tarjeta-estadistica strong {
-    display: block;
-    margin-top: 4px;
+    overflow-wrap: anywhere;
     color: var(--color-primario);
     font-size: 24px;
     font-weight: 750;
 }
 
-/* BOTONES VARIOS */
-#btnPostularse {
-    width: 100%;
-    min-height: 44px;
-    padding: 12px;
-    margin: 10px 0 16px 0;
-    border: none;
-    border-radius: 10px;
-    background: var(--color-emergencia);
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
+.fila-grafico {
+    grid-template-columns: minmax(75px, 100px) 1fr 30px;
+    gap: 9px;
+    font-size: 13px;
 }
 
+.barra-grafico {
+    background: #e9eef5;
+}
+
+.barra-grafico div {
+    background: linear-gradient(90deg, #b91c1c, #ef4444);
+}
+
+/* FORMULARIOS Y ACCIONES */
+
+.formulario-bombero {
+    border: 1px solid var(--color-borde);
+    border-radius: 13px;
+    background: #f8fafc;
+}
+
+.fila-form {
+    flex-wrap: wrap;
+}
+
+.fila-form input {
+    min-width: 0;
+    border: 1px solid var(--color-borde);
+    border-radius: 9px;
+    background: #fff;
+}
+
+.fila-form input:focus {
+    outline: none;
+    border-color: #94a3b8;
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.12);
+}
+
+#btnCrearBombero,
+#btnPostularse {
+    min-height: 44px;
+    border-radius: 10px;
+    background: var(--color-emergencia);
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
+#btnCrearBombero:hover,
 #btnPostularse:hover {
     background: var(--color-emergencia-hover);
 }
 
-/* ========================================= */
-/* RESPONSIVE MÓVIL */
-/* ========================================= */
+#btnCrearBombero:active,
+#btnPostularse:active {
+    transform: scale(0.99);
+}
 
-@media (max-width: 900px) {
+.postulacion-acciones button,
+.bombero-acciones button {
+    min-height: 36px;
+    border-radius: 8px;
+}
 
-    /* HEADER */
+.btn-aceptar,
+.btn-activar {
+    background: #15803d;
+}
+
+.btn-aceptar:hover,
+.btn-activar:hover {
+    background: #166534;
+}
+
+.btn-rechazar {
+    background: #b91c1c;
+}
+
+.btn-desactivar {
+    background: #b45309;
+}
+
+/* MARCADORES DEL MAPA */
+
+.icono-incidente {
+    border-radius: 13px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.24);
+}
+
+.icono-incidente ion-icon {
+    font-size: 23px;
+}
+
+.marcador-reportado .icono-incidente {
+    border-color: #dc2626;
+    color: #dc2626;
+}
+
+.marcador-en-camino .icono-incidente {
+    border-color: #d97706;
+    color: #b45309;
+}
+
+.marcador-atendido .icono-incidente {
+    border-color: #15803d;
+    color: #15803d;
+}
+
+.icono-estacion {
+    border-color: var(--color-primario);
+    border-radius: 14px;
+    color: var(--color-emergencia);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.22);
+}
+
+.icono-estacion ion-icon {
+    font-size: 27px;
+}
+
+/* SCROLL Y TRANSICIONES */
+
+.panel-contenido,
+.menu-opciones {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+::selection {
+    background: rgba(198, 40, 40, 0.16);
+}
+
+/* ADAPTACIÓN A MÓVILES */
+
+@media (max-width: 768px) {
     header {
-        height: 60px;
+        height: 64px;
         padding: 0 12px;
+    }
+
+    .header-izquierda {
+        gap: 9px;
     }
 
     .header-izquierda h1 {
@@ -604,65 +1595,56 @@ main {
         font-size: 11px;
     }
 
+    .header-derecha {
+        gap: 8px;
+    }
+
     #usuarioNombre {
-        max-width: 90px;
-        font-size: 13px;
+        max-width: 95px;
+        font-size: 12px;
     }
 
     .btn-cerrar-sesion {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
         padding: 0;
         font-size: 0;
-        justify-content: center;
     }
 
     .btn-cerrar-sesion ion-icon {
-        font-size: 22px;
-        margin: 0;
+        font-size: 21px;
     }
 
-    /* MENÚ + PANEL (se apilan) */
     .contenedor-menu {
-        top: 60px;
-        height: calc(100dvh - 60px);
-        width: 100%;
-        flex-direction: column;
+        height: calc(100dvh - 64px);
+        top: 64px;
     }
 
     .menu-lateral {
-        width: 100%;
-        height: auto;
-        max-height: 48%;
-        border-right: none;
-        border-bottom: 1px solid var(--color-borde);
-        box-shadow: none;
+        width: 205px;
+        height: 100%;
     }
 
     .panel-contenido {
-        width: 100%;
-        height: auto;
-        flex: 1;
+        height: 100%;
         padding: 16px;
-        box-shadow: none;
-        border-right: none;
     }
 
-    /* Controles mapa */
     .controles-mapa {
         right: 12px;
-        bottom: 16px;
+        bottom: 14px;
         gap: 8px;
     }
 
     .controles-mapa button {
-        min-height: 46px;
-        padding: 12px 14px;
+        min-height: 44px;
+        padding: 11px 13px;
+        border-radius: 11px;
         font-size: 13px;
     }
 
     .resumen-estadisticas {
-        grid-template-columns: 1fr 1fr;
         gap: 8px;
     }
 
@@ -673,27 +1655,149 @@ main {
     .tarjeta-estadistica strong {
         font-size: 20px;
     }
+
+    .fila-grafico {
+        grid-template-columns: 75px minmax(30px, 1fr) 24px;
+        gap: 7px;
+        font-size: 12px;
+    }
 }
 
-@media (max-width: 400px) {
-    .header-izquierda h1 {
-        font-size: 14px;
-    }
-
+@media (max-width: 380px) {
     .menu-lateral {
-        max-height: 45%;
+        width: 175px;
     }
 
     .panel-contenido {
         padding: 12px;
     }
 
-    .controles-mapa button {
-        font-size: 12px;
-        padding: 11px 12px;
+    .header-izquierda h1 {
+        font-size: 14px;
     }
 
-    .resumen-estadisticas {
-        grid-template-columns: 1fr;
+    .btn-menu {
+        width: 36px;
+        height: 36px;
     }
+}
+
+
+/* Alineación de Ionicons en encabezados y pestañas */
+
+.contenido-menu h2 ion-icon,
+.pestana ion-icon {
+    display: inline-block;
+    vertical-align: -3px;
+    margin-right: 5px;
+}
+
+.contenido-menu h2 ion-icon {
+    font-size: 22px;
+}
+
+.pestana {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.logo-grande ion-icon {
+    color: #fff;
+}
+
+#panelIncidente h2 ion-icon {
+    color: #c62828;
+}
+
+
+/* Alineación de los iconos */
+.contenido-menu h2 ion-icon,
+.pestana ion-icon,
+.panel-incidente h2 ion-icon {
+    display: inline-block;
+    vertical-align: -3px;
+    margin-right: 5px;
+}
+
+.contenido-menu h2 ion-icon,
+.panel-incidente h2 ion-icon {
+    font-size: 22px;
+}
+
+.pestana {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.logo-grande ion-icon {
+    color: #fff;
+}
+
+
+/* Iconos Ionicons dentro de los marcadores Leaflet */
+.icono-incidente,
+.icono-estacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+.icono-incidente ion-icon,
+.icono-estacion ion-icon {
+    font-size: 25px;
+    color: #fff;
+}
+
+.marcador-reportado .icono-incidente {
+    background: #d32f2f;
+}
+
+.marcador-en-camino .icono-incidente {
+    background: #ed8b00;
+}
+
+.marcador-atendido .icono-incidente {
+    background: #218838;
+}
+
+.marcador-estacion .icono-estacion {
+    background: #17365d;
+}
+
+.popup-incidente h3 {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 0;
+}
+
+.popup-incidente h3 ion-icon {
+    color: #d32f2f;
+    font-size: 22px;
+}
+
+.popup-incidente p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.popup-incidente p ion-icon {
+    color: #526579;
+    font-size: 18px;
+}
+
+.popup-incidente button ion-icon {
+    vertical-align: middle;
+    margin-right: 4px;
 }
