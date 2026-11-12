@@ -145,3 +145,55 @@ def obtener_informe(informe_id):
 
     except Exception as e:
         return {"error": str(e)}, 500
+
+@informes_bp.route("/api/informes", methods=["GET"])
+@requiere_rol("JEFE")
+def listar_informes():
+    try:
+        conexion = conectar_db()
+        cursor = conexion.cursor()
+
+        cursor.execute("""
+            SELECT
+                inf.id,
+                inf.incidente_id,
+                inf.archivo_pdf,
+                inf.fecha_subida,
+                i.codigo,
+                i.tipo,
+                i.fecha_hora,
+                ST_Y(i.ubicacion) AS latitud,
+                ST_X(i.ubicacion) AS longitud
+            FROM informes inf
+            INNER JOIN incidentes i
+                ON inf.incidente_id = i.id
+            ORDER BY inf.fecha_subida DESC;
+        """)
+
+        filas = cursor.fetchall()
+
+        informes = []
+
+        for fila in filas:
+            informes.append({
+                "id": fila[0],
+                "incidente_id": fila[1],
+                "archivo_pdf": fila[2],
+                "fecha_subida": fila[3].isoformat() if fila[3] else None,
+                "codigo": fila[4],
+                "tipo": fila[5],
+                "fecha_hora": fila[6].isoformat() if fila[6] else None,
+                "latitud": float(fila[7]),
+                "longitud": float(fila[8])
+            })
+
+        cursor.close()
+        conexion.close()
+
+        return {
+            "total": len(informes),
+            "informes": informes
+        }, 200
+
+    except Exception as e:
+        return {"error": str(e)}, 500

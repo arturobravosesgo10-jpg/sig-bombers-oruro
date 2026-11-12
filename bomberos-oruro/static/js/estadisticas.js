@@ -8,6 +8,7 @@ function actualizarControlesPorRol() {
     const puedeReportar = rolActual === "CIUDADANO";
     const esJefe = rolActual === "JEFE";
     const esCiudadano = rolActual === "CIUDADANO";
+    const menuInformes = document.getElementById("menuInformes");
 
     // Botón de reportar incendio
     btnIncendio.classList.toggle("oculto", !puedeReportar);
@@ -20,6 +21,8 @@ function actualizarControlesPorRol() {
     if (menuEstadisticas) {
         menuEstadisticas.classList.toggle("oculto", !esJefe);
     }
+
+    if (menuInformes) menuInformes.classList.toggle("oculto", !esJefe);
 
     if (menuPostulaciones) {
         menuPostulaciones.classList.toggle(

@@ -104,3 +104,16 @@ btnCerrarMenu.addEventListener("click", cerrarMenu);
 // ============================================
 
 menuOverlay.addEventListener("click", cerrarMenu);
+
+// ============================================
+// PANEL DE INFORMES
+// ============================================
+
+const menuInformes = document.getElementById("menuInformes");
+
+if (menuInformes) {
+    menuInformes.addEventListener("click", () => {
+        mostrarPanelMenu("panelInformes", "menuInformes");
+        cargarInformes();
+    });
+}

@@ -156,6 +156,11 @@
                         <span>Estadísticas</span>
                     </button>
 
+                    <button class="menu-item oculto" id="menuInformes">
+                        <ion-icon name="document-attach-outline"></ion-icon>
+                        <span>Informes</span>
+                    </button>
+
                 </nav>
 
             </div>
@@ -272,7 +277,29 @@
                     ></div>
 
                 </div>
-            </div> <!-- cierre panelContenido -->
+            <!-- PANEL DE INFORMES -->
+            <div id="panelInformes" class="contenido-menu panel-informes oculto">
+
+                <div class="encabezado-panel">
+                    <h2>
+                        <ion-icon name="document-text-outline"></ion-icon>
+                        Informes de incidentes
+                    </h2>
+                </div>
+
+                <p class="descripcion-informes">
+                    Consulta los informes PDF registrados por el personal de bomberos.
+                </p>
+
+                <div id="listaInformes">
+                    <p class="cargando-informes">
+                        Cargando informes...
+                    </p>
+                </div>
+
+            </div>
+
+         </div> <!-- cierre panelContenido -->
 
         </div> <!-- cierre contenedorMenu -->
 
